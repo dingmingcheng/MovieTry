@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+    <mapper namespace="com.system.dao.MovieDao">
+        <resultMap id="MovieResultMap" type="Movie">  
+            <id property="ID" column="ID" />  
+            <result property="Name" column="Name" />
+            <result property="Type" column="Type" />            
+        </resultMap>
+        
+        <select id="selectByType" resultType="Movie">
+        	SELECT * FROM movie where Type like "%${movietype}%"
+        </select>
+        
+        <select id="selectById" resultType="Movie">
+        	SELECT * FROM movie where ID = #{id}
+        </select>
+    </mapper>

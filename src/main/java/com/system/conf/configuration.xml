@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+    <!-- 配置数据库资源文件的路径 -->  
+<!--     <properties resource="properties/dataBase.properties"></properties>   -->
+    <typeAliases>  
+    <!-- 设置typeAlias是为了在User.xml中不用每次写全User类的路径，而是用User代替 -->  
+        <typeAlias type="com.system.bean.User" alias="User" />
+    </typeAliases>  
+    
+<!-- mybatis spring整合之前 -->
+
+<!--     <environments default="development">   -->
+<!--         <environment id="development">   -->
+<!--             <transactionManager type="JDBC" />   -->
+<!--             <dataSource type="POOLED"> -->
+<!--             下面配置中value的值必须与dataBase.properties中的名字相对应   -->
+<!--                 <property name="driver" value="com.mysql.jdbc.Driver" />   -->
+<!--                 <property name="url" value="jdbc:mysql://182.254.149.30:3306/test" />   -->
+<!--                 <property name="username" value="chaikai" />   -->
+<!--                 <property name="password" value="dmcdmc123" />   -->
+<!--             </dataSource>   -->
+<!--         </environment>   -->
+<!--     </environments>   -->
+      
+    <mappers>  
+<!-- 配置User.xml的路径 -->  
+        <mapper resource="com/system/confdao/User.xml" />
+    </mappers>  
+</configuration>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+    <mapper namespace="com.system.dao.UserinfDao">
+        <resultMap id="UserinfResultMap" type="Userinf">  
+            <id property="username" column="username" />  
+            <result property="email" column="email" />    
+            <result property="interests" column="interests" />
+        </resultMap>
+
+        
+        <insert id="insertintoUserinf" parameterType="Userinf">
+        	insert into userinf(username,email,interests) values(#{username},#{email},#{interests});
+        </insert>
+        
+        <select id="selectbyname" resultType="Userinf">
+        	select * from userinf where username=#{username};
+        </select>
+        
+        <select id="getmoviesbyPoint" resultType="Userinf">
+        	SELECT * FROM moviepoint ORDER BY sum DESC limit 100;
+        </select>
+    </mapper>

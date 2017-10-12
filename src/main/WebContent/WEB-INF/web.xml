@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>MovieTry</display-name>
+  
+  <!-- Spring配置 -->
+    <!-- 配置Spring配置文件路径,好让ContextLoaderListener对其加载与解析-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath*:conf/ApplicationContext.xml
+        </param-value>
+    </context-param>
+    
+    
+    <!-- 配置Spring上下文监听器,它的作用就是在启动WEB容器时,就会自动装在我们applicationContext.xml配置-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+          <!-- Spring MVC 核心控制器 DispatcherServlet 配置 -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <!--用于标明spring-mvc.xml配置的位置,我是存放在config文件夹下-->
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:conf/spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    
+    <!-- session登录验证 -->
+<!--     <filter>      注意这里是filter，不要配置成servlet -->
+<!-- 		<filter-name>loginFilter</filter-name>    过滤器名称 -->
+<!-- 		<filter-class>com.system.filter.LoginFilter</filter-class>  过滤器的完整类名  -->
+<!-- 	</filter> -->
+	  
+<!-- 	<filter-mapping> 过滤器映射 -->
+<!-- 		<filter-name>loginFilter</filter-name>过滤器名称   -->
+<!-- 		<url-pattern>*.jsp</url-pattern> -->
+<!-- 	</filter-mapping> -->
+	
+	
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <!-- 拦截所有*.do 的请求,交给DispatcherServlet处理,性能最好 -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	<!-- mapper namespace="Student" UserDaoTest.java用,下面id也需要改变-->
+    <mapper namespace="com.system.dao.UserDao">
+        <resultMap id="UserResultMap" type="User">  
+            <!-- id为主键，并且property的值必须与javaBean中的属性保持一致，column的值与数据库中的值保持一致 -->  
+            <id property="username" column="username" />  
+            <result property="password" column="password" />    
+        </resultMap>
+        <!-- 在UserDaoTest.java中，通过调用“namespace.select id 来进行查询” -->  
+        <!-- id是这条语句的标识，查询时会通过id来找到这条select语句。结果的类型是User类型,结果的映射在上面已经配置 -->  
+        
+        <insert id="insertintoUser" parameterType="User">
+        	insert into user(username,password) values(#{username},#{password});
+        </insert>
+        
+        <select id="selectbyname" resultType="User">
+        	select * from user where username=#{username};
+        </select>
+        
+    </mapper>

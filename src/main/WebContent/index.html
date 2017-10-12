@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Binary Admin</title>
+       <!-- Normalize -->
+<link rel="stylesheet" href="css/assets/normalize.css" type="text/css">
+<!-- Bootstrap -->
+<link href="css/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- Font-awesome.min -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Effet -->
+<link rel="stylesheet" href="css/gallery/foundation.min.css"  type="text/css">
+<link rel="stylesheet" type="text/css" href="css/gallery/set1.css" />
+
+<!-- Main Style -->
+
+<link rel="stylesheet" href="css/main.css" type="text/css">
+
+<!-- Responsive Style -->
+
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+
+<script src="js/assets/modernizr-2.8.3.min.js" type="text/javascript"></script>
+
+	<!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- MORRIS CHART STYLES-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
+<style type="text/css">
+	.loading{
+            width: 80px;
+            height: 40px;
+            margin: 0 auto;
+            margin-top:100px;
+        }
+        .loading span{
+            display: inline-block;
+            width: 8px;
+            height: 100%;
+            border-radius: 4px;
+            background: lightgreen;
+            -webkit-animation: load 1s ease infinite;
+        }
+        @-webkit-keyframes load{
+            0%,100%{
+                height: 40px;
+                background: lightgreen;
+            }
+            50%{
+                height: 70px;
+                margin: -15px 0;
+                background: lightblue;
+            }
+        }
+        .loading span:nth-child(2){
+            -webkit-animation-delay:0.2s;
+        }
+        .loading span:nth-child(3){
+            -webkit-animation-delay:0.4s;
+        }
+        .loading span:nth-child(4){
+            -webkit-animation-delay:0.6s;
+        }
+        .loading span:nth-child(5){
+            -webkit-animation-delay:0.8s;
+        }
+
+</style>
+</head>
+<body>
+	<div class="loading" id="loading1" style="display:none;position:absolute;z-index:9999;height:30px;width:200px;top:30%;left:50%;
+	margin-left:-150px;text-align:center;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+	</div>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Binary admin</a> 
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="login.html" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+					</li>
+				
+					
+                    <li>
+                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard fa-3x"></i> 猜你喜欢</a>
+                    </li>
+                    <!-- <li>
+                        <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
+                    </li>
+                    <li>
+                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                    </li>
+						   <li  >
+                        <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                    </li>	
+                      <li  >
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                    </li>
+                    <li  >
+                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                    </li>				
+					 <li  >
+                        <a   href="login.html"><i class="fa fa-bolt fa-3x"></i> Login</a>
+                    </li>	
+                     <li  >
+                        <a   href="registeration.html"><i class="fa fa-laptop fa-3x"></i> Registeration</a>
+                    </li>	-->
+					                   
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> 电影类型<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id="Film-Noir" onclick="showId(this);">Film-Noir</a>
+                            </li>
+                            <li>
+                                <a id="Action" onclick="showId(this);">Action</a>
+                            </li>
+							 <li>
+                                <a   id="Adventure" onclick="showId(this);">Adventure</a>
+                            </li>
+							 <li>
+                                <a   id="Horror" onclick="showId(this);">Horror</a>
+                            </li>
+							 <li>
+                                <a   id="Romance" onclick="showId(this);">Romance</a>
+                            </li>
+							 <li>
+                                <a   id="War" onclick="showId(this);">War</a>
+                            </li>
+							 <li>
+                                <a   id="Western" onclick="showId(this);">Western</a>
+                            </li>
+							 <li>
+                                <a   id="Documentary" onclick="showId(this);">Documentary</a>
+                            </li>
+                            <li>
+                                <a   id="Sci-Fi" onclick="showId(this);">Sci-Fi</a>                               
+                            </li>
+                            <li>
+                                <a   id="Drama" onclick="showId(this);">Drama</a>                               
+                            </li>
+                            <li>
+                                <a   id="Thriller" onclick="showId(this);">Thriller</a>                               
+                            </li>
+                            <li>
+                                <a   id="Children's" onclick="showId(this);">Children's</a>                               
+                            </li>
+                            <li>
+                                <a   id="Crime" onclick="showId(this);">Crime</a>                               
+                            </li>
+                            <li>
+                                <a   id="Fantasy" onclick="showId(this);">Fantasy</a>                               
+                            </li>
+                            <li>
+                                <a   id="Animation" onclick="showId(this);">Animation</a>                               
+                            </li>
+                            <li>
+                                <a   id="Comedy" onclick="showId(this);">Comedy</a>                               
+                            </li>
+                            <li>
+                                <a   id="Mystery" onclick="showId(this);">Mystery</a>                               
+                            </li>
+                            <li>
+                                <a   id="Musical" onclick="showId(this);">Musical</a>                               
+                            </li>
+                        </ul>
+                      </li>  
+                  <li  >
+                        <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> 用户信息</a>
+                    </li>	
+                </ul>
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+        	<main class="main-wrapper" id="container"> 
+  
+			  <!-- image Gallery -->
+			 <a onclick="change()">换一批</a>
+				  <div class="wrapper">
+				    <div class="">
+				      <ul id="allthemovie" class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
+				      
+				      </ul>
+				    </div>
+				  </div>
+			</main>
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->    
+    
+	<script type="text/javascript">
+		function showId(obj) {
+
+ 			//var k = "<li class=\"masonry-item grid\"><figure class=\"effect-sarah\"> <img src=\"kui\/3.jpg\" alt=\"\" /><figcaption><h2>姓名<span>a film</span></h2><p>Lorem</p><a href=\"about.html\">View more</a> </figcaption></figure></li>";
+ 			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+			//$("#allthemovie").append(k);
+ 			var t = obj.id;
+ 			//alert(t);
+ 			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+//  			alert(y);
+//  			document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML = '';
+//  			y = document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML;
+//  			alert(y);
+			$("#allthemovie").find("li").remove(); 
+			$("#loading1").show();
+			$.ajax({
+				url: 'getMovie.do',
+				type: 'POST',
+				data: {"movieType":t},
+				success:function(data) {
+					
+					var json=eval("("+data+")");
+		        	var flag=0;
+		        	var tableData =new Array(json.list.length);
+		        	if(tableData<0)
+		        	{
+		        		return;
+		        	}
+		        	for(var i in json.list)
+		        	{
+		        		var arrary = new Array(3);
+		        		arrary[0]=json.list[i].iD;
+		        		arrary[1]=json.list[i].name;
+		        		arrary[2]=json.list[i].type;
+		     			var k = "<li class=\"masonry-item grid\"><figure class=\"effect-sarah\"> <img src=\"kui/" + arrary[0] + ".jpg\" alt=\"\" /><figcaption><h2>" + arrary[1] + "</h2><p>" + arrary[2] + "</p><a id=\"" + arrary[0] + "\" onclick=\"rua(this)\">View more</a> </figcaption></figure></li>";
+		     			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+						$("#allthemovie").append(k);
+		        		//$("tbody").append(tr);
+		        	}
+		        	$("#loading1").hide();
+				}
+			})
+			//alert(k);
+			/*var t1 = document.getElementById("content_frame");
+			$("#content_frame").contents.find("#container").append("<input type=\"button\" value=\"asdasd\"></input>");
+			alert("as");*/
+			//window.location.href='index1.html?id='+t;
+			/*$.ajax({
+				url: 'getMovie.do',
+				type: 'POST',
+				data: {"movieType":t},
+				success:function(data) {
+					
+				}
+			})*/
+		}
+	</script>
+<script type="text/javascript">
+	function rua(obj) {
+		window.open("about.html?id=" + obj.id);
+	}
+</script>
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+     <!-- MORRIS CHART SCRIPTS -->
+     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
+   <!-- jQuery --> 
+<script src="js/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="js/assets/jquery.min.js"><\/script>')</script> 
+<script src="js/assets/plugins.js" type="text/javascript"></script> 
+<script src="js/assets/bootstrap.min.js" type="text/javascript"></script> 
+<script type="text/javascript">
+    	var userNow;
+    	$(function(){
+    		$("#allthemovie").find("li").remove();
+    		$("#loading1").show();
+    		$.ajax({
+    			url: 'getUserNow.do',
+    			type: 'POST',
+    			async: false,
+    			success:function(data) {
+    				userNow = data;
+    			}
+    		})
+    		
+    		$.ajax({
+    			url: 'getRec.do',
+    			type: 'POST',
+    			data: {"userNow":userNow},
+    			success:function(data) {
+    				$("#loading1").hide();
+					var json=eval("("+data+")");
+		        	var flag=0;
+		        	var tableData =new Array(json.list.length);
+		        	if(tableData<0)
+		        	{
+		        		return;
+		        	}
+		        	for(var i in json.list)
+		        	{
+		        		var arrary = new Array(3);
+		        		arrary[0]=json.list[i].iD;
+		        		arrary[1]=json.list[i].name;
+		        		arrary[2]=json.list[i].type;
+		     			var k = "<li class=\"masonry-item grid\"><figure class=\"effect-sarah\"> <img src=\"kui/" + arrary[0] + ".jpg\" alt=\"\" /><figcaption><h2>" + arrary[1] + "</h2><p>" + arrary[2] + "</p><a id=\"" + arrary[0] + "\" onclick=\"rua(this)\">View more</a> </figcaption></figure></li>";
+		     			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+						$("#allthemovie").append(k);
+		        		//$("tbody").append(tr);
+		        	}
+    			}
+    		})
+    	})
+    </script>
+    <script type="text/javascript">
+    	function change() {
+    		$("#allthemovie").find("li").remove();
+    		$("#loading1").show();
+    		$.ajax({
+    			url: 'getRec.do',
+    			type: 'POST',
+    			data: {"userNow":userNow},
+    			success:function(data) {
+    				$("#loading1").hide();
+					var json=eval("("+data+")");
+		        	var flag=0;
+		        	var tableData =new Array(json.list.length);
+		        	if(tableData<0)
+		        	{
+		        		return;
+		        	}
+		        	for(var i in json.list)
+		        	{
+		        		var arrary = new Array(3);
+		        		arrary[0]=json.list[i].iD;
+		        		arrary[1]=json.list[i].name;
+		        		arrary[2]=json.list[i].type;
+		     			var k = "<li class=\"masonry-item grid\"><figure class=\"effect-sarah\"> <img src=\"kui/" + arrary[0] + ".jpg\" alt=\"\" /><figcaption><h2>" + arrary[1] + "</h2><p>" + arrary[2] + "</p><a id=\"" + arrary[0] + "\" onclick=\"rua(this)\">View more</a> </figcaption></figure></li>";
+		     			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+						$("#allthemovie").append(k);
+		        		//$("tbody").append(tr);
+		        	}
+    			}
+    		})
+    	}
+    </script>
+<script src="js/maps.js" type="text/javascript"></script> 
+<script src="js/custom.js" type="text/javascript"></script> 
+<script src="js/jquery.contact.js" type="text/javascript"></script> 
+<script src="js/main.js" type="text/javascript"></script> 
+<script src="js/gallery/masonry.pkgd.min.js" type="text/javascript"></script> 
+<script src="js/gallery/imagesloaded.pkgd.min.js" type="text/javascript"></script> 
+<script src="js/gallery/jquery.infinitescroll.min.js" type="text/javascript"></script> 
+<script src="js/gallery/main.js" type="text/javascript"></script> 
+<script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
+</body>
+</html>

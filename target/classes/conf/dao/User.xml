@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+    <mapper namespace="com.system.dao.UserDao">
+        <resultMap id="UserResultMap" type="User">   
+            <id property="username" column="username" />  
+            <result property="password" column="password" />    
+            <result property="Id" column="Id" />
+        </resultMap>
+
+        
+        <insert id="insertintoUser" parameterType="User">
+        	insert into user(username,password) values(#{username},#{password});
+        </insert>
+        
+        <select id="selectbyname" resultType="User">
+        	select * from user where username=#{username};
+        </select>
+        
+    </mapper>

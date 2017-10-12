@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="no-js"  lang="en">
+
+  <head>
+
+  
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <title>:: Picxa | About ::</title>
+    
+    <!-- Normalize -->
+    <link rel="stylesheet" href="css/assets/normalize.css" type="text/css"> 
+    <!-- Bootstrap -->
+    <link href="css/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Font-awesome.min -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+	<!-- Responsive Style -->
+    <link href="css/responsive.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexText.js"></script>
+ 	<script src="js/assets/modernizr-2.8.3.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/comment.css">
+<style>
+	.wrapper{width:300px; margin:10px auto; font:14px/1.5 arial;}
+	#star{overflow:hidden;}
+	#star li{
+		float:left;
+		width:20px;
+		height:20px;
+		margin:2px;
+		display:inline;
+		color:#999;
+		font:bold 18px arial;
+		cursor:pointer
+	}
+	#star .act{
+		color:#c00
+	}
+	#star_word{
+		width:80px;
+		height:30px;
+		line-height:30px;
+		border:1px solid #ccc;
+		margin:10px;
+		text-align:center;
+		display:none
+	}
+</style>
+</head>
+
+<body>
+<!-- 星级评分 -->
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+</script>
+
+
+<script>
+window.onload = function(){
+	var star = document.getElementById("star");
+	var star_li = star.getElementsByTagName("li");
+	var star_word = document.getElementById("star_word");
+	var result = document.getElementById("result");
+	var i=0;
+	var j=0;
+	var len = star_li.length;
+	var word = ['很差','差','一般',"好","很好"]
+	for(i = 0; i < len; i ++){
+		star_li[i].index = i;
+		star_li[i].onmouseover = function(){
+			star_word.style.display = "block";
+			star_word.innerHTML = word[this.index];
+			for(i=0; i<=this.index; i++){
+			star_li[i].className = "act";
+			}
+		}
+		
+		star_li[i].onmouseout = function(){
+			star_word.style.display = "none";
+			for(i=0; i<len; i++){
+			star_li[i].className = "";
+			}
+		}
+		star_li[i].onclick = function(){
+			result.innerHTML = (this.index+1)+"分";
+			var point = (this.index+1);
+			//alert(userNow);
+			//alert(id);
+			//alert(this.index+1);
+			$.ajax({
+				url: 'putpoint.do',
+				type: 'POST',
+				data: {"userId":userNow,"Pictureid":id,"Point":point},
+				success:function(data) {
+					alert("打分成功");
+					//alert(userNow);
+				}
+			})
+		}
+	}
+}
+</script>
+            <!-- header -->
+            <header id="header" class="header">
+            	<div class="container-fluid">
+                	<hgroup>
+                    	<!-- logo -->
+                        	<h1>
+                            	<a title="Picxa"><img src="images/logo.png" alt="Picxa" title="Picxa"/></a>
+                            </h1>
+                        <!-- logo -->
+                        <!-- nav -->
+                        <nav>
+                            <div class="menu-expanded">
+                            	<div class="nav-icon">
+                                	<div id="menu" class="menu"></div>
+                                    <p>menu</p>
+                                </div>
+                                <div class="cross">
+                                    <span class="linee linea1"></span>
+                                    <span class="linee linea2"></span>
+                                    <span class="linee linea3"></span>
+                                </div>
+                                <div class="main-menu">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li class="active"><a href="about.html">About</a></li>
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="contact.html">contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <!-- nav -->
+
+                    </hgroup>
+
+                </div>
+
+            </header>
+
+            <!-- header -->
+
+            <!-- main-wrapper-inner -->
+
+        	<main class="main-wrapper-inner" id="container">
+
+            	<div class="container">
+
+                	<div class="wrapper-inner">
+
+                    	<!-- details-image -->
+
+                    	<figure class="details-image">
+
+                        	<img id = "thisMovieId" src="" alt="" class="img-responsive"/>
+
+                        </figure>
+
+                        <!-- details-image -->
+
+                        <!-- content -->
+
+                        <div class="about-content">
+
+                        	<!-- left -->
+
+                        	<section class="inner-left">
+
+                            	<header>
+
+                                    <h4>电影名称</h4>
+									<div class="wrapper">
+									打分结果 
+									<span id="result"></span>
+									<ul id="star">
+									<li>★</li><li>★</li><li>★</li><li>★</li><li>★</li>
+									</ul>
+									<div id="star_word">一般</div>
+									</div> 
+                                </header>
+
+                            </section>
+
+                            <!-- left -->
+
+                            <!-- right -->
+
+                            <section class="inner-right">
+
+                            	<h3>评论区</h3>
+								<div class="commentAll">
+						<!--评论区域 begin-->
+							<div class="reviewArea clearfix">
+								<textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+								<a href="javascript:;" class="plBtn">评论</a>
+							</div>
+							<!--评论区域 end-->
+							<!--回复区域 begin-->
+							<div class="comment-show">
+								<div class="comment-show-con clearfix" id = "comments">
+<!-- 									<div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div> -->
+<!-- 									<div class="comment-show-con-list pull-left clearfix"> -->
+<!-- 										<div class="pl-text clearfix"> -->
+<!-- 											<a href="#" class="comment-size-name">张三 : </a> -->
+<!-- 											<span class="my-pl-con">&nbsp;来啊 造作啊!</span> -->
+<!-- 										</div> -->
+<!-- 										<div class="date-dz"> -->
+<!-- 											<span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span> -->
+<!-- 											<div class="date-dz-right pull-right comment-pl-block"> -->
+<!-- 												<a href="javascript:;" class="removeBlock">删除</a> -->
+<!-- 												<span class="pull-left date-dz-line">|</span> -->
+<!-- 												<a id="yuju" href="javascript:;" class="date-dz-z pull-left"><i class="asd" style="display:none">13</i><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> -->
+<!-- 											</div> -->
+<!-- 										</div>										 -->
+<!-- 										<div class="hf-list-con"></div> -->
+<!-- 									</div> -->
+									
+								</div>
+							</div>
+							<!--回复区域 end-->
+						</div>
+
+                                
+                            </section>
+                            <!-- right -->
+                        </div>
+                        <!-- content -->
+                    </div>
+
+                </div>
+
+            </main>
+
+          <!-- main-wrapper-inner -->
+
+         <!-- footer -->
+
+         <footer class="footer">
+
+            <h3>Stay connected with us</h3>
+
+            <div class="container footer-bot">
+
+                <div class="row">
+
+                	<!-- logo -->
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+                    	<img src="images/footer-logo.png" alt="Picxa" title="Picxa"/>
+
+                    	<p class="copy-right">&copy; Reserved Picxa inc 2016.</p>
+
+                    </div>
+
+                    <!-- logo -->
+
+                    <!-- address -->
+
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+
+                    	<address><p>200 Broadway Av</p>
+					<p>West Beach SA 5024  Australia</p></address>
+
+                    </div>
+
+                    <!-- address -->
+
+                    <!-- email -->
+
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+
+                            <p><a href="mailto:contact@Picxa.com">contact@Picxa.com</a></p>
+
+                            <p>01 (2) 34 56 78</p>
+
+                    </div>
+                    <!-- email -->
+                    <!-- social -->
+                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 padding-top">
+
+                     	<ul class="social">
+
+                        	<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+                            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+                            <li><a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a></li>
+
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+
+                            <li><a href="#"><i class="fa fa-delicious" aria-hidden="true"></i></a></li>
+
+                        </ul>
+
+                    	<p class="made-by">Made with by <i class="fa fa-heart" aria-hidden="true"></i> <a href="http:///" target="_blank">Designstub</a><p>
+                    </div>
+                    <!-- social -->
+                </div>
+            </div>
+        </footer>
+        <!-- footer -->
+    <!-- jQuery -->
+<!-- 图片 -->
+
+<script type="text/javascript">
+	var id = GetQueryString("id");
+	$("#thisMovieId").attr("src", "kui/"+id+".jpg");
+</script>
+
+<!--  初始加载评论 -->
+<script type="text/javascript">
+	var userNow;
+	var id = GetQueryString("id");
+	$(function(){
+		$.ajax({
+			url: 'getUserNow.do',
+			type: 'POST',
+			async: false,
+			success:function(data) {
+				userNow = data;
+				//alert(userNow);
+			}
+		})
+		//alert(userNow);
+		$.ajax({
+			url: 'getComment.do',
+			type: 'POST',
+			data: {"Pictureid":id},
+			success:function(data) {
+				data = data.replace(/\\/g,"")
+				var json=eval("("+data+")");
+	        	var tableData =new Array(json.list.length);
+	        	if(tableData<0)
+	        	{
+	        		return;
+	        	}
+	        	for(var i in json.list)
+	        	{
+	        		var arrary = new Array(5);
+	        		arrary[0] = json.list[i].username;
+	        		arrary[1] = json.list[i].time;
+	        		arrary[2] = json.list[i].comment;
+	        		arrary[3] = json.list[i].up;
+	        		arrary[4] = json.list[i].count_id;
+			        var oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">' + arrary[0] + ' : </a> <span class="my-pl-con">&nbsp;'+ arrary[2] +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+arrary[1]+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="asd" style="display:none">' + arrary[4] + '</i><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">'+ arrary[3] +'</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+			        //alert(oHtml);
+			        $("#comments").append(oHtml);
+			        /*if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
+			            $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
+			            $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
+			        }*/
+	     			//var k = "<li class=\"masonry-item grid\"><figure class=\"effect-sarah\"> <img src=\"kui/" + arrary[0] + ".jpg\" alt=\"\" /><figcaption><h2>" + arrary[1] + "</h2><p>" + arrary[2] + "</p><a id=\"" + arrary[0] + "\" onclick=\"rua(this)\">View more</a> </figcaption></figure></li>";
+	     			//document.getElementById('content_frame').contentWindow.document.getElementById('allthemovie').innerHTML += k;
+					//$("#allthemovie").append(k);
+	        		//$("tbody").append(tr);
+	        	}
+			}
+		})
+	})
+</script>
+	<!--textarea高度自适应-->
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>
+<!--textarea限制字数-->
+<script type="text/javascript">
+    function keyUP(t){
+        var len = $(t).val().length;
+        if(len > 139){
+            $(t).val($(t).val().substring(0,140));
+        }
+    }
+</script>
+<!--点击评论创建评论条-->
+<script type="text/javascript">
+    $('.commentAll').on('click','.plBtn',function(){
+    	
+        var myDate = new Date();
+        //获取当前年
+        var year=myDate.getFullYear();
+        //获取当前月
+        var month=myDate.getMonth()+1;
+        //获取当前日
+        var date=myDate.getDate();
+        var h=myDate.getHours();       //获取当前小时数(0-23)
+        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+        if(m<10) m = '0' + m;
+        var s=myDate.getSeconds();
+        if(s<10) s = '0' + s;
+        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+        //获取输入内容
+        var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
+        console.log(oSize);
+        //动态创建评论模块
+
+        $.ajax({
+			url: 'putComment.do',
+			type: 'POST',
+			data: {"Pictureid":id,"time":now,"username":userNow,"comment":oSize},
+			success:function(data) {
+				alert("评论成功");
+			}
+		})
+		        var oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="images/header-img-comment_03.png" alt=""></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">' + userNow + ' : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+		        if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
+		            $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
+		            $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
+		        }
+    });
+</script>
+
+<!--删除评论块-->
+<script type="text/javascript">
+    $('.commentAll').on('click','.removeBlock',function(){
+        var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
+        if(oT.siblings('.all-pl-con').length >= 1){
+            oT.remove();
+        }else {
+            $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display','none')
+            oT.remove();
+        }
+        $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
+
+    })
+</script>
+<!--点赞-->
+<script type="text/javascript">
+    $('.comment-show').on('click','.date-dz-z',function(){
+        var zNum = $(this).find('.z-num').html();
+        if($(this).is('.date-dz-z-click')){
+            zNum--;
+            $(this).removeClass('date-dz-z-click red');
+            $(this).find('.z-num').html(zNum);
+            $(this).find('.date-dz-z-click-red').removeClass('red');
+        }else {
+            zNum++;
+            $(this).addClass('date-dz-z-click');
+            $(this).find('.z-num').html(zNum);
+            $(this).find('.date-dz-z-click-red').addClass('red');
+            var t = $(this).find('.asd').html()
+            //alert(t);
+            $.ajax({
+    			url: 'throwup.do',
+    			type: 'POST',
+    			data: {"Pictureid":id,"countId":t},
+    			success:function(data) {
+    				alert("点赞成功");
+    			}
+    		})
+        }
+        /*$.ajax({
+			url: 'throwup.do',
+			type: 'POST',
+			data: {"Pictureid":id,"countId":oSize},
+			success:function(data) {
+				
+			}
+		})*/
+    })
+</script>
+    <script>window.jQuery || document.write('<script src="js/assets/jquery.min.js"><\/script>')</script>
+
+    <script src="js/assets/plugins.js" type="text/javascript"></script>
+
+    <script src="js/assets/bootstrap.min.js" type="text/javascript"></script>
+
+	<script src="js/main.js" type="text/javascript"></script>
+
+	<script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>	
+
+	
+
+
+	
+
+  </body>
+
+</html>
